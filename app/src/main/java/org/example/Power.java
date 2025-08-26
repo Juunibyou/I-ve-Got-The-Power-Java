@@ -14,11 +14,20 @@ public class Power {
     if (x2 == 0){return 0;}
     if (n2 == 0){return 1;}
 
-    //incomplete
+    if (n2 % 2 == 0){return unoptimizedApproach(x2, n2 / 2) * unoptimizedApproach(x2, n2 / 2);}
+    else{return x2 * unoptimizedApproach(x2, n2 / 2) * unoptimizedApproach(x2, n2 / 2);}
   }
 
-  public int optimizedApproach(int x3, int x3){
-    
-  }
+  public int optimizedApproach(int x3, int n3){
+    if (x3 == 0){return 0;}
+    if (n3 == 0){return 1;}
 
+    int op = optimizedApproach(x3, n3 / 1);
+    if (n3 % 2 == 0){
+      return op * op;
+    }
+    else{
+      return x3 * op * op;
+    }
+  }
 }
