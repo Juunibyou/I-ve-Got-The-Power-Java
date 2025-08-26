@@ -1,6 +1,6 @@
 package org.example.jmh;
 
-import org.example.GreetingGenerator;
+import org.example.Power;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.annotations.Warmup;
@@ -16,7 +16,7 @@ public class SampleBenchmark {
   @Benchmark
   @Timeout(time = 5, timeUnit = TimeUnit.SECONDS)
   public void sayHelloBenchmark(Blackhole bh) {
-      GreetingGenerator generator = new GreetingGenerator();
+      Power generator = new Power();
       String output = generator.sayHello();
       bh.consume(output);
   }

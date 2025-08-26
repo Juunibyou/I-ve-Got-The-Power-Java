@@ -9,7 +9,7 @@ class GreetingGeneratorTest {
 
   @Test
   void itSaysHello() {
-    GreetingGenerator generator = new GreetingGenerator();
+    Power generator = new Power();
     assertEquals(generator.sayHello(), "Hello World!");
   }
 }
