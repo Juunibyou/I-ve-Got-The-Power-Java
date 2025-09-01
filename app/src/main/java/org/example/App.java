@@ -4,33 +4,54 @@ public class App {
     public static void main(String[] args) {
       Power power = new Power();
       
-      int[] bases = {2, 5, 7, 12, 30};         
-      int[] exponents = {5, 10, 15, 20, 25};     
+      int[] bases = {2, 3, 4, 5, 6};
+      int[] exponents = {3, 4, 5, 6, 7};
+
+      int trials = 10;
 
       for (int x : bases) {
-        System.out.println("");
+        System.out.println("|_______SET______|");
+
         for (int n : exponents) {
-        System.out.println("Base = " + x + ", Exponent = " + n);
+          System.out.println("Base = " + x + ", Exponent = " + n);
 
-        // Naive
-        long startNaive = System.nanoTime();
-        int resultNaive = power.naiveApproach(x, n);
-        long endNaive = System.nanoTime();
-        System.out.println("Naive result: " + resultNaive + " | Time: " + (endNaive - startNaive));
+          // Naive
+          long totalNaive = 0;
+          int resultNaive = 0;
 
-        // Unoptimized
-        long startUnopt = System.nanoTime();
-        int resultUnopt = power.unoptimizedApproach(x, n);
-        long endUnopt = System.nanoTime();
-        System.out.println("Unoptimized result: " + resultUnopt + " | Time: " + (endUnopt - startUnopt));
+          for(int i = 0; i < trials; i++){
+            long start = System.nanoTime();
+            resultNaive = power.naiveApproach(x, n);
+            long end = System.nanoTime();
+            totalNaive += (end - start);
+          }
+          System.out.println("1. Naive result: " + resultNaive + " Time: " + (totalNaive / trials) + "(ns)");
 
-        // Optimized
-        long startOpt = System.nanoTime();
-        int resultOpt = power.optimizedApproach(x, n);
-        long endOpt = System.nanoTime();
-        System.out.println("Optimized result: " + resultOpt + " | Time: " + (endOpt - startOpt));
+          // Unoptimized
+          long totalUnopt = 0;
+          int resultUnopt = 0;
 
-        System.out.println("-----------------------------");
+          for(int i = 0; i < trials; i++){
+            long startUnopt = System.nanoTime();
+            resultUnopt = power.unoptimizedApproach(x, n);
+            long endUnopt = System.nanoTime();
+            totalUnopt += (endUnopt - startUnopt);
+          }
+          System.out.println("2. Unoptimized result: " + resultUnopt + " Time: " + (totalUnopt / trials) + "(ns)");
+
+          // Optimized
+          long totalOpt = 0;
+          int resultOpt = 0;
+
+          for(int i = 0; i < trials; i++){
+            long startOpt = System.nanoTime();
+            resultOpt = power.optimizedApproach(x, n);
+            long endOpt = System.nanoTime();
+            totalOpt += (endOpt - startOpt);
+          }
+          System.out.println("3. Optimized result: " + resultOpt + " Time: " + (totalOpt / trials) + "(ns)");
+
+          System.out.println("-----------------------------");
         }
       }
     }
