@@ -15,8 +15,11 @@ import java.util.concurrent.TimeUnit;
 public class PowerBenchmark{
 
     private Power power;
-    private int base = 2;
-    private int exponent = 20;
+
+    @Param({"2", "3", "4", "5", "6"})
+    private int base;
+    @Param({"3", "4", "5", "6", "7"})
+    private int exponent;
 
     @Setup(Level.Iteration)
     public void setUp() {
