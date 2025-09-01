@@ -22,7 +22,7 @@ public class Power {
     if (x3 == 0){return 0;}
     if (n3 == 0){return 1;}
 
-    int op = optimizedApproach(x3, n3 / 1);
+    int op = optimizedApproach(x3, n3 / 2);
     if (n3 % 2 == 0){
       return op * op;
     }
